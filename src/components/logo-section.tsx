@@ -20,7 +20,7 @@ export const LogoSection = async () => {
   const sponsors = await getSponsors();
 
   return (
-    <div className="h-64 grid grid-cols-3  bg-tyre">
+    <div className="grid grid-cols-3 bg-tyre">
       {sponsors.items.map((i) => (
         <div className="relative w-64 h-64 invert grayscale mix-blend-screen" key={i.fields.name}>
           <Image
