@@ -2,6 +2,7 @@ import * as contentful from "contentful";
 import Image from "next/image";
 import { cache } from "react";
 
+import { ButtonLink } from "./button-link";
 import { Wrapper } from "./wrapper";
 
 const content = contentful.createClient({
@@ -18,15 +19,17 @@ const getSponsors = cache(() =>
   })
 );
 
-export const LogoSection = async () => {
+export const LogoSection: React.FC<{ className?: string }> = async (props) => {
   const sponsors = await getSponsors();
 
   return (
-    <Wrapper className="mb-16">
+    <Wrapper className={`${props.className ?? ``}`}>
+      <h2 className="font-black text-4xl flex-grow mb-16">Our partners</h2>
       <div className="grid grid-cols-3 bg-tyre">
         {sponsors.items.map((i) => (
-          <div
-            className="relative w-64 h-32 p-8 rounded-md invert grayscale mix-blend-screen duration-300 transition-all from-90% from-white to-fire hover:mix-blend-normal hover:filter-none hover:bg-gradient-to-b hover:drop-shadow-fire hover:scale-110"
+          <ButtonLink
+            href=""
+            className="relative w-64 h-32 border-b-transparent p-8 invert bg-white grayscale bg-transparent mix-blend-screen duration-300 transition-all hover:border-fire hover:filter-none hover:mix-blend-normal"
             key={i.fields.name}
           >
             <Image
@@ -35,7 +38,7 @@ export const LogoSection = async () => {
               fill
               className="object-contain scale-75"
             />
-          </div>
+          </ButtonLink>
         ))}
       </div>
     </Wrapper>

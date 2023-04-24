@@ -3,6 +3,8 @@ import Image from "next/image";
 import React from "react";
 
 import { Hero } from "@/components/hero";
+import { InstagramFeedSection } from "@/components/instagram-feed-section";
+import { LogoSection } from "@/components/logo-section";
 import { Wrapper } from "@/components/wrapper";
 
 const content = contentful.createClient({
@@ -118,6 +120,8 @@ const About = async ({ params }: any) => {
           </div>
         ))}
       </Wrapper>
+      <InstagramFeedSection className="mb-32" />
+      <LogoSection className="mb-64" />
     </main>
   );
 };

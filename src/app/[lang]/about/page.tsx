@@ -95,7 +95,8 @@ const About = async ({ params }: any) => {
             <div className="absolute h-px left-0 bottom-0 -right-64 bg-gradient-to-r from-transparent via-fire to-transparent via-20% blur-[1px]" />
           </div>
           <div className="w-2/3 pt-32 pb-8">
-            <h2 className="text-3xl font-black drop-shadow-fire mb-6">
+            <h3 className="text-fire uppercase font-black">THE DRIVER</h3>
+            <h2 className="text-4xl font-black drop-shadow-fire mb-6">
               Tommi Nyvall
             </h2>
             <div>
@@ -107,18 +108,20 @@ const About = async ({ params }: any) => {
           </div>
         </div>
       </Wrapper>
-      <Wrapper>
-        <div className="flex flex-row"> 
+      <Wrapper className="mb-32">
+        <div className="flex flex-row">
           <TeamMember
             imageSrc="/leif.jpg"
             imageAlt="Leif"
             name="Leif Nyvall"
+            role="Manager & Mechanic"
             text="Test Test Test Test Test "
           />
           <TeamMember
             imageSrc="/glen.jpg"
             imageAlt="Glen"
             name="Glen Envik"
+            role="Chassis Expert"
             text="Test Test Test Test Test "
           />
         </div>
@@ -132,18 +135,24 @@ const TeamMember: React.FC<{
   imageSrc: string;
   imageAlt: string;
   name: string;
+  role: string;
   text: string;
 }> = (props) => {
   return (
     <div className="relative w-full">
-        <Image src={props.imageSrc} width={200} height={200} alt={props.imageAlt} className=" rounded-full w-32 h-32" />
+      <Image
+        src={props.imageSrc}
+        width={200}
+        height={200}
+        alt={props.imageAlt}
+        className=" mix-blend-lighten rounded-full w-36 h-36"
+      />
       <div className="-mt-8 ml-20">
-        <h2 className="text-2xl font-black drop-shadow-fire mb-6">
+      <h3 className="text-fire uppercase font-black ml-6">{props.role}</h3>
+        <h2 className="text-3xl font-black drop-shadow-fire mb-2">
           {props.name}
         </h2>
-        <div>
-          {props.text}
-        </div>
+        <div>{props.text}</div>
       </div>
     </div>
   );

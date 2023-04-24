@@ -1,5 +1,8 @@
 import Image from "next/image";
 
+import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import { Wrapper } from "./wrapper";
 
 export const Footer: React.FC<{
@@ -14,9 +17,7 @@ export const Footer: React.FC<{
       ></div>
       <div className="h-[13vh] from-tyre to-transparent bg-gradient-to-b mix-blend-darken">
         <Wrapper>
-          <h2 className="font-black text-white text-6xl mb-16">
-            Let's drive.
-          </h2>
+          <h2 className="font-black text-white text-6xl mb-16">Let's drive.</h2>
         </Wrapper>
       </div>
       <Wrapper className="mt-4">
@@ -77,7 +78,16 @@ export const Footer: React.FC<{
               className="bg-transparent placeholder:text-[#fff3] outline-fire px-4 py-4 transition-all duration-300 focus:drop-shadow-fire"
             ></textarea>
           </FormElementContainer>
-          <button type="submit">Submit</button>
+          <button
+            type="submit"
+            className="uppercase font-black flex flex-row items-center justify-center p-4 border border-transparent duration-300 transition-all hover:drop-shadow-fire hover:border-fire border-b-fire"
+          >
+                          <FontAwesomeIcon
+                icon={faPaperPlane}
+                className="mr-4 text-xl"
+              />
+            Submit
+          </button>
         </form>
       </Wrapper>
       <div className="absolute mix-blend-multiply opacity-50 w-[50vw] h-[50vw] right-10 bottom-10 lg:w-[60vh] lg:h-[60vh] lg:right-40 lg:bottom-24">
