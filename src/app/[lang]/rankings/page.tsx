@@ -2,6 +2,9 @@ import * as contentful from "contentful";
 import Image from "next/image";
 import React from "react";
 
+import { Hero } from "@/components/hero";
+import { Wrapper } from "@/components/wrapper";
+
 const content = contentful.createClient({
   accessToken: process.env.CONTENTFUL_API_KEY!,
   space: "r8lurnfo6cag",
@@ -95,16 +98,8 @@ const About = async ({ params }: any) => {
 
   return (
     <main className="">
-      <div className="relative w-full h-screen">
-        <Image
-          src="/rankings-hero.jpg"
-          fill
-          className="object-cover"
-          alt="Rankings"
-        />
-        <div className="absolute bottom-0 bg-gradient-to-t from-tyre to-transparent h-[30vh] w-full" />
-      </div>
-      <div className="relative z-10 -mt-[40vh] max-w-6xl mr-auto ml-auto px-8 pt-8 pb-24 lg:py-16 2xl:px-0">
+      <Hero imageSrc="/rankings-hero.jpg" />
+      <Wrapper overlap className="mb-32">
         <div className="mb-16 lg:mb-32">
           <h1 className="font-black text-xl mb-2 uppercase text-fire">
             TN MOTORSPORT
@@ -116,17 +111,13 @@ const About = async ({ params }: any) => {
             <h3 className="font-black text-xl text-fire mb-4">{year}</h3>
             {results.map((r) => (
               <div key={r.competition} className="flex justify-stretch mb-2">
-                <div className="flex-grow">
-                {r.competition}
-                </div>
-                <div>
-                {r.position}
-                </div>
+                <div className="flex-grow">{r.competition}</div>
+                <div>{r.position}</div>
               </div>
             ))}
           </div>
         ))}
-      </div>
+      </Wrapper>
     </main>
   );
 };

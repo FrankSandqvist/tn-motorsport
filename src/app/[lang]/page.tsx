@@ -1,9 +1,11 @@
 import * as contentful from "contentful";
-import { NextPage } from "next";
 import Image from "next/image";
 import React from "react";
 
+import { Hero } from "@/components/hero";
+import { InstagramFeedSection } from "@/components/instagram-feed-section";
 import { LogoSection } from "@/components/logo-section";
+import { Wrapper } from "@/components/wrapper";
 
 const content = contentful.createClient({
   accessToken: process.env.CONTENTFUL_API_KEY!,
@@ -69,18 +71,8 @@ const Home = async ({ params }: any) => {
 
   return (
     <main className="">
-      <div className="relative w-full h-screen">
-        <video
-          autoPlay
-          muted
-          loop
-          className="absolute object-cover w-full h-full"
-        >
-          <source src="/loop.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute bottom-0 bg-gradient-to-t from-tyre to-transparent h-[30vh] w-full" />
-      </div>
-      <div className="relative z-10 -mt-[40vh] max-w-6xl mr-auto ml-auto px-8 pt-8 pb-24 lg:py-16 2xl:px-0">
+      <Hero videoSrc="/loop.mp4" />
+      <Wrapper overlap>
         <div className="mb-16 lg:mb-32">
           <h1 className="font-black text-xl mb-2 uppercase text-fire">
             TN Experience
@@ -93,6 +85,8 @@ const Home = async ({ params }: any) => {
           <p className="mb-4">{textMap["6fwTZlCJ3PreqbcvH81BXh"][lang]}</p>
           <p className="mb-4">{textMap["144AUl108cUcTg5zJDAkQ1"][lang]}</p>
         </div>
+      </Wrapper>
+      <Wrapper className="mb-44">
         <div className="grid gap-16 grid-cols-1 lg:grid-cols-3 2xl:-mx-32">
           <PackageContainer>
             <h2 className="text-3xl font-black mb-4 -ml-16 drop-shadow-fire relative z-20">
@@ -203,10 +197,9 @@ const Home = async ({ params }: any) => {
           </PackageContainer>
         </div>
         <div className="relative"></div>
-        <div>
-          <LogoSection />
-        </div>
-      </div>
+      </Wrapper>
+      <InstagramFeedSection />
+      <LogoSection />
     </main>
   );
 };

@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 
 import { Footer } from "@/components/footer";
+import { InstagramFeedSection } from "@/components/instagram-feed-section";
 import { Navbar } from "@/components/navbar";
 
 const PageLayout = ({

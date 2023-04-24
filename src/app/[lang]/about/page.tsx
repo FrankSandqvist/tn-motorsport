@@ -2,6 +2,10 @@ import * as contentful from "contentful";
 import Image from "next/image";
 import React from "react";
 
+import { Hero } from "@/components/hero";
+import { InstagramFeedSection } from "@/components/instagram-feed-section";
+import { Wrapper } from "@/components/wrapper";
+
 const content = contentful.createClient({
   accessToken: process.env.CONTENTFUL_API_KEY!,
   space: "r8lurnfo6cag",
@@ -66,38 +70,34 @@ const About = async ({ params }: any) => {
 
   return (
     <main className="">
-      <div className="relative w-full h-screen">
-        <Image
-          src="/about-hero.jpg"
-          fill
-          className="object-cover"
-          alt="About"
-        />
-        <div className="absolute bottom-0 bg-gradient-to-t from-tyre to-transparent h-[30vh] w-full" />
-      </div>
-      <div className="relative z-10 -mt-[40vh] max-w-6xl mr-auto ml-auto px-8 pt-8 pb-24 lg:py-16 2xl:px-0">
+      <Hero imageSrc="/about-hero.jpg" />
+      <Wrapper overlap>
         <div className="mb-16 lg:mb-32">
           <h1 className="font-black text-xl mb-2 uppercase text-fire">
             Since 20XX
           </h1>
           <h2 className="font-black text-4xl">About TN Motorsport</h2>
         </div>
-        <div className="max-w-4xl mb-32 leading-relaxed">
+        <div className="max-w-4xl mb-64 leading-relaxed">
           <p className="mb-4">{textMap["6fwTZlCJ3PreqbcvH81BXh"][lang]}</p>
         </div>
-      </div>
-      <div className="relative max-w-6xl mr-auto ml-auto px-8 pt-8 pb-24 lg:py-16 2xl:px-0">
+      </Wrapper>
+      <Wrapper className="mb-16">
         <div className="flex flex-row ">
-          <div className="relative w-1/3 ">
+          <div className="relative w-1/3 -mt-32">
             <Image
               src="/tommi.jpg"
               fill
               alt="Tommi"
               className="object-contain w-full h-full mix-blend-screen"
             />
+            <div className="absolute h-px left-0 bottom-0 -right-32 bg-gradient-to-r from-transparent via-fire to-transparent via-20%" />
+            <div className="absolute h-px left-0 bottom-0 -right-64 bg-gradient-to-r from-transparent via-fire to-transparent via-20% blur-[1px]" />
           </div>
-          <div className="w-2/3 pt-32">
-            <h2 className="text-2xl font-black">Tommi Nyvall</h2>
+          <div className="w-2/3 pt-32 pb-8">
+            <h2 className="text-3xl font-black drop-shadow-fire mb-6">
+              Tommi Nyvall
+            </h2>
             <div>
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat
               eaque dolorem beatae necessitatibus hic, cum minus commodi
@@ -106,8 +106,46 @@ const About = async ({ params }: any) => {
             </div>
           </div>
         </div>
-      </div>
+      </Wrapper>
+      <Wrapper>
+        <div className="flex flex-row"> 
+          <TeamMember
+            imageSrc="/leif.jpg"
+            imageAlt="Leif"
+            name="Leif Nyvall"
+            text="Test Test Test Test Test "
+          />
+          <TeamMember
+            imageSrc="/glen.jpg"
+            imageAlt="Glen"
+            name="Glen Envik"
+            text="Test Test Test Test Test "
+          />
+        </div>
+      </Wrapper>
+      <InstagramFeedSection className="mb-16" />
     </main>
+  );
+};
+
+const TeamMember: React.FC<{
+  imageSrc: string;
+  imageAlt: string;
+  name: string;
+  text: string;
+}> = (props) => {
+  return (
+    <div className="relative w-full">
+        <Image src={props.imageSrc} width={200} height={200} alt={props.imageAlt} className=" rounded-full w-32 h-32" />
+      <div className="-mt-8 ml-20">
+        <h2 className="text-2xl font-black drop-shadow-fire mb-6">
+          {props.name}
+        </h2>
+        <div>
+          {props.text}
+        </div>
+      </div>
+    </div>
   );
 };
 

@@ -1,36 +1,30 @@
 import Image from "next/image";
 
-export const Footer: React.FC<{
+export const Hero: React.FC<{
   imageSrc?: string;
   videoSrc?: string;
 }> = (props) => {
   return (
-    <footer
-      className="relative h-[110vh] bg-cover bg-fixed mb-32"
-      style={{
-        backgroundImage: 'url("/footer-bg.jpg")',
-        backgroundPosition: "right bottom",
-      }}
-    >
-      <div className="absolute top-0 left-0 right-0 h-[10vh] from-tyre to-transparent bg-gradient-to-b"></div>
-      <div className="absolute w-[60vh] h-[60vh] right-40 bottom-24 mix-blend-multiply opacity-50">
+    <div className="relative w-full h-screen">
+      {props.videoSrc && (
+        <video
+          autoPlay
+          muted
+          loop
+          className="absolute object-cover w-full h-full"
+        >
+          <source src={props.videoSrc} type="video/mp4" />
+        </video>
+      )}
+      {props.imageSrc && (
         <Image
-          src="/footer-helmet-shadow.jpg"
-          quality={90}
+          src={props.imageSrc}
           fill
-          alt="Helmet"
-          className="object-contain"
+          className="object-cover"
+          alt="Rankings"
         />
-      </div>
-      <div className="absolute w-[60vh] h-[60vh] right-40 bottom-24 mix-blend-lighten">
-        <Image
-          src="/footer-helmet.jpg"
-          quality={90}
-          fill
-          alt="Helmet"
-          className="object-contain"
-        />
-      </div>
-    </footer>
+      )}
+      <div className="absolute bottom-0 bg-gradient-to-t from-tyre to-transparent h-[30vh] w-full" />
+    </div>
   );
 };
