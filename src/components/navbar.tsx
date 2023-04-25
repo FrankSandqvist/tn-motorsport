@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
@@ -9,8 +10,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const Navbar: React.FC<{
   lang: "fi" | "en" | "sv";
-  currentPath: string;
 }> = (props) => {
+  const pathname = usePathname();
+
   const [showNavbar, setShownavbar] = useState(false);
   const [mobileNavbarOpen, setMobileNavbarOpen] = useState(false);
 
@@ -57,7 +59,7 @@ export const Navbar: React.FC<{
           <Link
             href="/"
             className={`${
-              props.currentPath === `/${props.lang}` ? `text-fire` : ``
+              pathname === `/${props.lang}` ? `text-fire` : ``
             }`}
           >
             TN Experience
@@ -66,7 +68,7 @@ export const Navbar: React.FC<{
           <Link
             href={`/${props.lang}/about`}
             className={`${
-              props.currentPath === `/${props.lang}/about` ? `text-fire` : ``
+              pathname === `/${props.lang}/about` ? `text-fire` : ``
             }`}
           >
             About the team
@@ -75,7 +77,7 @@ export const Navbar: React.FC<{
           <Link
             href={`/${props.lang}/rankings`}
             className={`${
-              props.currentPath === `/${props.lang}/rankings` ? `text-fire` : ``
+              pathname === `/${props.lang}/rankings` ? `text-fire` : ``
             }`}
           >
             Rankings

@@ -7,8 +7,7 @@ import { Wrapper } from "./wrapper";
 
 export const Footer: React.FC<{
   lang: "fi" | "en" | "sv";
-  currentPath: string;
-}> = (props) => {
+}> = () => {
   return (
     <footer className="relative h-[90vh] overflow-hidden">
       <div
@@ -82,10 +81,7 @@ export const Footer: React.FC<{
             type="submit"
             className="uppercase font-black flex flex-row items-center justify-center p-4 border border-transparent duration-300 transition-all hover:drop-shadow-fire hover:border-fire border-b-fire"
           >
-                          <FontAwesomeIcon
-                icon={faPaperPlane}
-                className="mr-4 text-xl"
-              />
+            <FontAwesomeIcon icon={faPaperPlane} className="mr-4 text-xl" />
             Submit
           </button>
         </form>

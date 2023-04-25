@@ -6,6 +6,7 @@ import { ButtonLink } from "@/components/button-link";
 import { Hero } from "@/components/hero";
 import { InstagramFeedSection } from "@/components/instagram-feed-section";
 import { LogoSection } from "@/components/logo-section";
+import { ContentfulRichTextDocument, RichText } from "@/components/rich-text";
 import { Wrapper } from "@/components/wrapper";
 import { faBoltLightning, faFlagCheckered, faGaugeHigh } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -26,21 +27,14 @@ const Home = async ({ params }: any) => {
     content_type: "text",
   });
 
-  const textMap: Record<
-    string,
-    {
-      en: string;
-      fi: string;
-      sv: string;
-    }
-  > = texts.items.reduce(
+  const textMap: Record<string, string> = texts.items.reduce(
     (acc, t) => ({
       ...acc,
       [t.sys.id]: {
         en: t.fields.english,
         fi: t.fields.finnish,
         sv: t.fields.swedish,
-      },
+      }[lang],
     }),
     {}
   );
@@ -53,24 +47,20 @@ const Home = async ({ params }: any) => {
     content_type: "richText",
   });
 
-  const richTextMap: Record<
-    string,
-    {
-      en: string;
-      fi: string;
-      sv: string;
-    }
-  > = texts.items.reduce(
-    (acc, t) => ({
-      ...acc,
-      [t.sys.id]: {
-        en: t.fields.english,
-        fi: t.fields.finnish,
-        sv: t.fields.swedish,
-      },
-    }),
-    {}
-  );
+  const richTextMap: Record<string, ContentfulRichTextDocument> =
+    richTexts.items.reduce(
+      (acc, t) => ({
+        ...acc,
+        [t.sys.id]: {
+          en: t.fields.english,
+          fi: t.fields.finnish,
+          sv: t.fields.swedish,
+        }[lang],
+      }),
+      {}
+    );
+
+  console.log(JSON.stringify(richTextMap));
 
   return (
     <main className="">
@@ -81,12 +71,12 @@ const Home = async ({ params }: any) => {
             TN Experience
           </h1>
           <h2 className="font-black text-4xl">
-            {textMap["1ainiOKH0CGbJZAVXAxMLv"][lang]}
+            {textMap["1ainiOKH0CGbJZAVXAxMLv"]}
           </h2>
         </div>
         <div className="max-w-4xl mb-32 leading-relaxed">
-          <p className="mb-4">{textMap["6fwTZlCJ3PreqbcvH81BXh"][lang]}</p>
-          <p className="mb-4">{textMap["144AUl108cUcTg5zJDAkQ1"][lang]}</p>
+          <p className="mb-4">{textMap["6fwTZlCJ3PreqbcvH81BXh"]}</p>
+          <p className="mb-4">{textMap["144AUl108cUcTg5zJDAkQ1"]}</p>
         </div>
       </Wrapper>
       <Wrapper className="mb-44">
@@ -105,21 +95,16 @@ const Home = async ({ params }: any) => {
                 />
               </div>
               <BulletPoint>
-                <TextHilight>Your logo</TextHilight> on the van & trailer,
-                competition cars, team clothes, competition overalls and roll-up
-                sign
+                <RichText doc={richTextMap["6acR7B38RDRJ3ZFU9RUf5h"]} />
               </BulletPoint>
               <BulletPoint>
-                <TextHilight>Marketing and visibility</TextHilight> on social
-                media
+                <RichText doc={richTextMap["6JSsPeX7zwnP3z6SIIFksf"]} />
               </BulletPoint>
               <BulletPoint>
-                <TextHilight>Participation</TextHilight> at your company events
-                and conferences
+                <RichText doc={richTextMap["6xW1E0XBgZpH5MoQEnDzd6"]} />
               </BulletPoint>
               <BulletPoint>
-                <TextHilight>Free entrance</TextHilight> to all competitions in
-                Finland and Sweden
+                <RichText doc={richTextMap["72CGZvT3N68czEMqDwz1bU"]} />
               </BulletPoint>
             </BulletPointContainer>
             <div className="flex-grow" />
@@ -145,20 +130,16 @@ const Home = async ({ params }: any) => {
                 />
               </div>
               <BulletPoint>
-                <TextHilight>A unique chance</TextHilight> to try what it's like
-                to be a race car driver - with a race car driver
+                <RichText doc={richTextMap["4rTsaVaMEi6CfsaZkIev1s"]} />
               </BulletPoint>
               <BulletPoint>
-                <TextHilight>A driving day</TextHilight> at Kemora or
-                Botniaring, with a race car and coaching
+                <RichText doc={richTextMap["5yoKx1Zj06vgzNfD4MLDT4"]} />
               </BulletPoint>
               <BulletPoint>
-                <TextHilight>Excellent</TextHilight> for groups between 4 to 10
-                people, as a recreational day for the staff or as a customer
-                event.
+                <RichText doc={richTextMap["3rmBmfY0KT28C1KzxgmAWS"]} />
               </BulletPoint>
               <BulletPoint>
-                <TextHilight>Food</TextHilight>, drink and coffee included
+                <RichText doc={richTextMap["2lSdsn7HtcIT6dKRQd6v2L"]} />
               </BulletPoint>
             </BulletPointContainer>
             <div className="flex-grow" />
@@ -185,16 +166,13 @@ const Home = async ({ params }: any) => {
               </div>
 
               <BulletPoint ultra>
-                <TextHilight ultra>Visibility and the experience</TextHilight>{" "}
-                in one exclusive package.
+                Visibility and the experience in one exclusive package.
               </BulletPoint>
               <BulletPoint ultra>
-                <TextHilight ultra>Save 500€</TextHilight> off the Visibility
-                package
+                Save 500€ off the Visibility package
               </BulletPoint>
               <BulletPoint ultra>
-                <TextHilight ultra>Experience package</TextHilight> (4 -10
-                people) at 400€ / person
+                Experience package (4 -10 people) at 400€ / person
               </BulletPoint>
             </BulletPointContainer>
             <div className="flex-grow" />
@@ -262,17 +240,6 @@ const PackageContainer: React.FC<{ ultra?: boolean; children: any }> = (
     <div className="p-4 flex flex-col flex-grow">{props.children}</div>
   </div>
 );
-
-const TextHilight: React.FC<{
-  children: any;
-  ultra?: boolean;
-}> = (props) => {
-  return (
-    <span className={`font-black ${props.ultra ? `text-ultra` : `text-fire`}`}>
-      {props.children}
-    </span>
-  );
-};
 
 const BulletPointContainer: React.FC<{
   children: any;

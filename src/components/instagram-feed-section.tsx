@@ -14,7 +14,7 @@ export const InstagramFeedSection: React.FC<{ className?: string }> = (
         </h2>
         <div className="flex flex-row gap-8">
           <ButtonLink
-            href=""
+            href="https://www.facebook.com/TNmotorsport62/"
             className="flex flex-row gap-2 items-center p-2 flex-grow lg:flex-auto"
           >
             <Image
@@ -27,7 +27,7 @@ export const InstagramFeedSection: React.FC<{ className?: string }> = (
             TN Motorsport
           </ButtonLink>
           <ButtonLink
-            href=""
+            href="https://www.instagram.com/tomminyvall/"
             className="flex flex-row gap-2 items-center p-2  flex-grow lg:flex-auto"
           >
             <Image
