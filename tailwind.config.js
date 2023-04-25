@@ -17,6 +17,7 @@ module.exports = {
     fontFamily: {
       sans: ["Monument Extended", "sans-serif"],
     },
+    lett
   },
   plugins: [],
 };
