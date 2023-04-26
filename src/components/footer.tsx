@@ -6,25 +6,27 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { Wrapper } from "./wrapper";
 
+// Apply font scaling globally to size (based on viewport)
+
 export const Footer: React.FC<{
   lang: "fi" | "en" | "sv";
   textMap: Record<string, string>;
 }> = (props) => {
   return (
-    <footer className="relative h-[90vh] overflow-hidden">
+    <footer className="relative min-h-[90vh] overflow-hidden">
       <div
         className="absolute left-0 top-0 right-0 bottom-0 bg-right bg-cover bg-fixed"
         style={{ backgroundImage: 'url("/footer-bg.jpg")' }}
       ></div>
       <div className="h-[13vh] from-tyre to-transparent bg-gradient-to-b mix-blend-darken">
         <Wrapper>
-          <h2 className="font-black text-white text-6xl mb-16">
+          <h2 className="font-black text-white text-4xl lg:text-6xl mb-16">
             {props.textMap["6BgUDnm2lrv4KIT692i303"]}
           </h2>
         </Wrapper>
       </div>
       <Wrapper className="mt-4">
-        <div className="w-full flex flex-col items-end mb-16 lg:flex-row">
+        <div className="w-full flex flex-col gap-4 -mt-[6vh] mb-8 text-xs sm:text-sm md:text-lg lg:mb-16 lg:flex-row">
           <div className="flex-grow">
             T.N Motorsport Service Öb
             <br />
@@ -33,20 +35,24 @@ export const Footer: React.FC<{
             66950 Munsala
           </div>
           <div className="flex-grow">
-            Leif Nyvall
-            <br />
-            +358 40 96 03 415
-          </div>
-          <div className="flex-grow">
             Tommi Nyvall
             <br />
-            +358 40 96 04 227
+            <a href="tel:+358 40 96 04 227">+358 40 96 04 227</a>
+            <br />
+            <a href="mailto:tn.motorsport93@gmail.com">
+              tn.motorsport93@gmail.com
+            </a>
+          </div>
+          <div className="flex-grow">
+            Leif Nyvall
+            <br />
+            <a href="tel:+358 40 96 03 415">+358 40 96 03 415</a>
           </div>
         </div>
         <form
           method="POST"
           action={process.env.HEADLESSFORMS_ACTION_URL}
-          className="flex flex-col w-1/2 gap-4"
+          className="flex flex-col gap-4 text-xs sm:text-sm md:text-lg lg:w-1/2"
         >
           <input type="hidden" name="tn" value="tn.motorsport93@gmail.com" />
           <FormElementContainer>
@@ -98,7 +104,7 @@ export const Footer: React.FC<{
           </button>
         </form>
       </Wrapper>
-      <div className="absolute mix-blend-multiply opacity-50 w-[50vw] h-[50vw] right-10 bottom-10 lg:w-[60vh] lg:h-[60vh] lg:right-40 lg:bottom-24">
+      <div className="absolute mix-blend-multiply opacity-50  w-[60vh] h-[60vh] right-40 bottom-24 hidden lg:block">
         <Image
           src="/footer-helmet-shadow.jpg"
           quality={90}
@@ -107,7 +113,7 @@ export const Footer: React.FC<{
           className="object-contain"
         />
       </div>
-      <div className="absolute mix-blend-lighten w-[50vw] h-[50vw] right-10 bottom-10 lg:w-[60vh] lg:h-[60vh] lg:right-40 lg:bottom-24">
+      <div className="absolute mix-blend-lighten w-[60vh] h-[60vh] right-40 bottom-24 hidden lg:block">
         <Image
           src="/footer-helmet.jpg"
           quality={90}
@@ -122,7 +128,7 @@ export const Footer: React.FC<{
 
 const FormElementContainer: React.FC<{ children: any }> = (props) => {
   return (
-    <div className="flex flex-col bg-[#0003] backdrop-blur-md rounded-sm border-b border-fire">
+    <div className="flex flex-col bg-[#0003] backdrop-blur-md border-b border-fire">
       {props.children}
     </div>
   );
@@ -145,7 +151,7 @@ const FormElementInput: React.FC<{
     <input
       type={props.type}
       name={props.name}
-      className="bg-transparent placeholder:text-[#fff3] outline-fire px-4 py-4 transition-all duration-300 focus:drop-shadow-fire"
+      className="bg-transparent placeholder:text-[#fff3] outline-fire px-4 py-2 transition-all duration-300 focus:drop-shadow-fire lg:py-4"
       placeholder={props.placeholder}
     ></input>
   );

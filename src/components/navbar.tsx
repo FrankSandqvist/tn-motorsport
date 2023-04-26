@@ -36,7 +36,7 @@ export const Navbar: React.FC<{
     >
       <div className="h-16 flex flex-row items-center flex-grow">
         <div
-          className={`font-black text-2xl pr-4 flex-grow transition-all duration-300 ${
+          className={`font-black text-xl pr-4 flex-grow transition-all duration-300 md:text-2xl ${
             mobileNavbarOpen || showNavbar
               ? `opacity-100 blur-none`
               : `opacity-0 blur-sm`
