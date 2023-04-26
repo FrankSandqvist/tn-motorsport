@@ -9,6 +9,7 @@ export const Hero: React.FC<{
       {props.videoSrc && (
         <video
           autoPlay
+          playsInline
           muted
           loop
           className="absolute object-cover w-full h-full"

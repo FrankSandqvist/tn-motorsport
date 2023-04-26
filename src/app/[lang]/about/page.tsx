@@ -4,7 +4,9 @@ import React from "react";
 
 import { Hero } from "@/components/hero";
 import { InstagramFeedSection } from "@/components/instagram-feed-section";
+import { RichText } from "@/components/rich-text";
 import { Wrapper } from "@/components/wrapper";
+import { getLocalizedRichTextMap, getLocalizedTextMap } from "@/utils/get-texts";
 
 const content = contentful.createClient({
   accessToken: process.env.CONTENTFUL_API_KEY!,
@@ -14,59 +16,8 @@ const content = contentful.createClient({
 const About = async ({ params }: any) => {
   const lang = params.lang as "en" | "fi" | "sv";
 
-  const texts = await content.getEntries<{
-    english: string;
-    finnish: string;
-    swedish: string;
-  }>({
-    content_type: "text",
-  });
-
-  const textMap: Record<
-    string,
-    {
-      en: string;
-      fi: string;
-      sv: string;
-    }
-  > = texts.items.reduce(
-    (acc, t) => ({
-      ...acc,
-      [t.sys.id]: {
-        en: t.fields.english,
-        fi: t.fields.finnish,
-        sv: t.fields.swedish,
-      },
-    }),
-    {}
-  );
-
-  const richTexts = await content.getEntries<{
-    english: string;
-    finnish: string;
-    swedish: string;
-  }>({
-    content_type: "richText",
-  });
-
-  const richTextMap: Record<
-    string,
-    {
-      en: string;
-      fi: string;
-      sv: string;
-    }
-  > = texts.items.reduce(
-    (acc, t) => ({
-      ...acc,
-      [t.sys.id]: {
-        en: t.fields.english,
-        fi: t.fields.finnish,
-        sv: t.fields.swedish,
-      },
-    }),
-    {}
-  );
+  const textMap = await getLocalizedTextMap(lang);
+  const richTextMap = await getLocalizedRichTextMap(lang);
 
   return (
     <main className="">
@@ -76,10 +27,15 @@ const About = async ({ params }: any) => {
           <h1 className="font-black text-xl mb-2 uppercase text-fire">
             Since 20XX
           </h1>
-          <h2 className="font-black text-4xl">About TN Motorsport</h2>
+          <h2 className="font-black text-4xl">
+            {textMap["4nSNk4pa6LsWIouNgXLs1S"]}
+          </h2>
         </div>
         <div className="max-w-4xl mb-64 leading-relaxed">
-          <p className="mb-4">{textMap["6fwTZlCJ3PreqbcvH81BXh"][lang]}</p>
+          <RichText
+            className="mb-8"
+            doc={richTextMap["5iMfoSTR47BWT7cU3PR1N0"]}
+          />
         </div>
       </Wrapper>
       <Wrapper className="mb-16">
@@ -95,15 +51,14 @@ const About = async ({ params }: any) => {
             <div className="absolute h-px left-0 bottom-0 -right-64 bg-gradient-to-r from-transparent via-fire to-transparent via-20% blur-[1px]" />
           </div>
           <div className="w-2/3 pt-32 pb-8">
-            <h3 className="text-fire uppercase font-black">THE DRIVER</h3>
+            <h3 className="text-fire uppercase font-black">
+              {textMap["1sqS1l3GeFGTOxUsGRiqjv"]}
+            </h3>
             <h2 className="text-4xl font-black drop-shadow-fire mb-6">
               Tommi Nyvall
             </h2>
             <div>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat
-              eaque dolorem beatae necessitatibus hic, cum minus commodi
-              obcaecati impedit, qui maxime vero reprehenderit? Eum, molestias.
-              Earum aperiam perferendis recusandae ipsam!
+              <RichText doc={richTextMap["5tKcZhmSpOrbK9OCJhXqQS"]} />
             </div>
           </div>
         </div>
@@ -114,19 +69,21 @@ const About = async ({ params }: any) => {
             imageSrc="/leif.jpg"
             imageAlt="Leif"
             name="Leif Nyvall"
-            role="Manager & Mechanic"
-            text="Test Test Test Test Test "
-          />
+            role={textMap["2iJW4Z6gXZP82veMSLQBj2"]}
+          >
+            <RichText doc={richTextMap["2Bkz203SwU1wThdcRlIauq"]} />
+          </TeamMember>
           <TeamMember
             imageSrc="/glen.jpg"
             imageAlt="Glen"
             name="Glen Envik"
-            role="Chassis Expert"
-            text="Test Test Test Test Test "
-          />
+            role={textMap["398tYe9A7iP07FbFMr1H0L"]}
+          >
+            <RichText doc={richTextMap["3S5dZ4kHHiFGM2Fmwhx0yR"]} />
+          </TeamMember>
         </div>
       </Wrapper>
-      <InstagramFeedSection className="mb-16" />
+      <InstagramFeedSection textMap={textMap} className="mb-16" />
     </main>
   );
 };
@@ -136,7 +93,7 @@ const TeamMember: React.FC<{
   imageAlt: string;
   name: string;
   role: string;
-  text: string;
+  children: any;
 }> = (props) => {
   return (
     <div className="relative w-full">
@@ -148,11 +105,11 @@ const TeamMember: React.FC<{
         className=" mix-blend-lighten rounded-full w-36 h-36"
       />
       <div className="-mt-8 ml-20">
-      <h3 className="text-fire uppercase font-black ml-6">{props.role}</h3>
+        <h3 className="text-fire uppercase font-black ml-6">{props.role}</h3>
         <h2 className="text-3xl font-black drop-shadow-fire mb-2">
           {props.name}
         </h2>
-        <div>{props.text}</div>
+        <div>{props.children}</div>
       </div>
     </div>
   );

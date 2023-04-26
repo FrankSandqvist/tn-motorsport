@@ -3,16 +3,17 @@ import Image from "next/image";
 import { ButtonLink } from "./button-link";
 import { Wrapper } from "./wrapper";
 
-export const InstagramFeedSection: React.FC<{ className?: string }> = (
-  props
-) => {
+export const InstagramFeedSection: React.FC<{
+  className?: string;
+  textMap: Record<string, string>;
+}> = (props) => {
   return (
     <div className={props.className}>
       <Wrapper className="flex flex-col mb-8 justify-stretch lg:flex-row">
-        <h2 className="font-black text-4xl flex-grow mb-4 lg:mb-0">
-          Keep up to date
+        <h2 className="font-black text-xl flex-grow mb-8 md:text-2xl lg:mb-0 lg:text-4xl">
+          {props.textMap["5ojOZTkwiPDxtP2nm4ECev"]}
         </h2>
-        <div className="flex flex-row gap-8">
+        <div className="flex flex-col gap-4 md:flex-row">
           <ButtonLink
             href="https://www.facebook.com/TNmotorsport62/"
             className="flex flex-row gap-2 items-center p-2 flex-grow lg:flex-auto"
@@ -28,7 +29,7 @@ export const InstagramFeedSection: React.FC<{ className?: string }> = (
           </ButtonLink>
           <ButtonLink
             href="https://www.instagram.com/tomminyvall/"
-            className="flex flex-row gap-2 items-center p-2  flex-grow lg:flex-auto"
+            className="flex flex-row gap-2 items-center p-2 flex-grow lg:flex-auto"
           >
             <Image
               src="/instagram.svg"

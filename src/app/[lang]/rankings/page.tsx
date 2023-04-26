@@ -6,6 +6,7 @@ import { Hero } from "@/components/hero";
 import { InstagramFeedSection } from "@/components/instagram-feed-section";
 import { LogoSection } from "@/components/logo-section";
 import { Wrapper } from "@/components/wrapper";
+import { getLocalizedTextMap } from "@/utils/get-texts";
 
 const content = contentful.createClient({
   accessToken: process.env.CONTENTFUL_API_KEY!,
@@ -15,59 +16,7 @@ const content = contentful.createClient({
 const About = async ({ params }: any) => {
   const lang = params.lang as "en" | "fi" | "sv";
 
-  const texts = await content.getEntries<{
-    english: string;
-    finnish: string;
-    swedish: string;
-  }>({
-    content_type: "text",
-  });
-
-  const textMap: Record<
-    string,
-    {
-      en: string;
-      fi: string;
-      sv: string;
-    }
-  > = texts.items.reduce(
-    (acc, t) => ({
-      ...acc,
-      [t.sys.id]: {
-        en: t.fields.english,
-        fi: t.fields.finnish,
-        sv: t.fields.swedish,
-      },
-    }),
-    {}
-  );
-
-  const richTexts = await content.getEntries<{
-    english: string;
-    finnish: string;
-    swedish: string;
-  }>({
-    content_type: "richText",
-  });
-
-  const richTextMap: Record<
-    string,
-    {
-      en: string;
-      fi: string;
-      sv: string;
-    }
-  > = texts.items.reduce(
-    (acc, t) => ({
-      ...acc,
-      [t.sys.id]: {
-        en: t.fields.english,
-        fi: t.fields.finnish,
-        sv: t.fields.swedish,
-      },
-    }),
-    {}
-  );
+  const textMap = await getLocalizedTextMap(lang);
 
   const competitionResults = await content.getEntries<{
     competition: string;
@@ -120,8 +69,8 @@ const About = async ({ params }: any) => {
           </div>
         ))}
       </Wrapper>
-      <InstagramFeedSection className="mb-32" />
-      <LogoSection className="mb-64" />
+      <InstagramFeedSection textMap={textMap} className="mb-32" />
+      <LogoSection textMap={textMap} className="mb-64" />
     </main>
   );
 };

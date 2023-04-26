@@ -1,15 +1,4 @@
-export interface ContentfulRichTextDocument {
-  content: Array<{
-    nodeType: "paragraph";
-    content: Array<{
-      nodeType: "text";
-      value: string;
-      marks: Array<{ type: "bold" }>;
-    }>;
-  }>;
-  className?: string;
-  ultra?: boolean;
-}
+import { ContentfulRichTextDocument } from "@/utils/get-texts";
 
 export const RichText: React.FC<{
   doc: ContentfulRichTextDocument;

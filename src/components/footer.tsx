@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import { getLocalizedTextMap } from "@/utils/get-texts";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -7,7 +8,8 @@ import { Wrapper } from "./wrapper";
 
 export const Footer: React.FC<{
   lang: "fi" | "en" | "sv";
-}> = () => {
+  textMap: Record<string, string>;
+}> = (props) => {
   return (
     <footer className="relative h-[90vh] overflow-hidden">
       <div
@@ -16,7 +18,9 @@ export const Footer: React.FC<{
       ></div>
       <div className="h-[13vh] from-tyre to-transparent bg-gradient-to-b mix-blend-darken">
         <Wrapper>
-          <h2 className="font-black text-white text-6xl mb-16">Let's drive.</h2>
+          <h2 className="font-black text-white text-6xl mb-16">
+            {props.textMap["6BgUDnm2lrv4KIT692i303"]}
+          </h2>
         </Wrapper>
       </div>
       <Wrapper className="mt-4">
@@ -46,7 +50,9 @@ export const Footer: React.FC<{
         >
           <input type="hidden" name="tn" value="tn.motorsport93@gmail.com" />
           <FormElementContainer>
-            <FormElementLabel for="name">Name</FormElementLabel>
+            <FormElementLabel for="name">
+              {props.textMap["4pRzicNNsbkPkudW94o5jp"]}
+            </FormElementLabel>
             <FormElementInput
               type="text"
               name="name"
@@ -54,7 +60,9 @@ export const Footer: React.FC<{
             />
           </FormElementContainer>
           <FormElementContainer>
-            <FormElementLabel for="phone_number">Phone number</FormElementLabel>
+            <FormElementLabel for="phone_number">
+              {props.textMap["54tRDktKPgtixMr3dd7kFs"]}
+            </FormElementLabel>
             <FormElementInput
               type="text"
               name="phone_number"
@@ -62,7 +70,9 @@ export const Footer: React.FC<{
             />
           </FormElementContainer>
           <FormElementContainer>
-            <FormElementLabel for="email">Email</FormElementLabel>
+            <FormElementLabel for="email">
+              {props.textMap["2IQacF6ftq6dHJ2FXKxp5E"]}
+            </FormElementLabel>
             <FormElementInput
               type="email"
               name="email"
@@ -70,7 +80,9 @@ export const Footer: React.FC<{
             />
           </FormElementContainer>
           <FormElementContainer>
-            <FormElementLabel for="message">Message</FormElementLabel>
+            <FormElementLabel for="message">
+              {props.textMap["2iRTGL8QZcrx5jYw0skg1i"]}
+            </FormElementLabel>
             <textarea
               name="message"
               placeholder="Tommi, let's drive."
@@ -82,7 +94,7 @@ export const Footer: React.FC<{
             className="uppercase font-black flex flex-row items-center justify-center p-4 border border-transparent duration-300 transition-all hover:drop-shadow-fire hover:border-fire border-b-fire"
           >
             <FontAwesomeIcon icon={faPaperPlane} className="mr-4 text-xl" />
-            Submit
+            {props.textMap["3pPnyiah7oZAhC39DYTzNW"]}
           </button>
         </form>
       </Wrapper>

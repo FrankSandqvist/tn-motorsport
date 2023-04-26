@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const Navbar: React.FC<{
   lang: "fi" | "en" | "sv";
+  textMap: Record<string, string>;
 }> = (props) => {
   const pathname = usePathname();
 
@@ -58,11 +59,9 @@ export const Navbar: React.FC<{
         <div className="flex flex-col gap-4 text-2xl lg:px-4 lg:text-sm lg:flex-row">
           <Link
             href="/"
-            className={`${
-              pathname === `/${props.lang}` ? `text-fire` : ``
-            }`}
+            className={`${pathname === `/${props.lang}` ? `text-fire` : ``}`}
           >
-            TN Experience
+            {props.textMap["11hCKGngwjrpGFh8oyrFoA"]}
           </Link>
           <div className="h-px bg-white opacity-30 lg:h-auto lg:w-px" />
           <Link
@@ -71,7 +70,7 @@ export const Navbar: React.FC<{
               pathname === `/${props.lang}/about` ? `text-fire` : ``
             }`}
           >
-            About the team
+            {props.textMap["4OyFrpd3dju2iV7L4nH7ZP"]}
           </Link>
           <div className="h-px bg-white opacity-30 lg:h-auto lg:w-px" />
           <Link
@@ -80,7 +79,7 @@ export const Navbar: React.FC<{
               pathname === `/${props.lang}/rankings` ? `text-fire` : ``
             }`}
           >
-            Rankings
+            {props.textMap["1LzbPDhcE1gAxrCixGpG6D"]}
           </Link>
           <div className="h-px bg-white opacity-30 lg:h-auto lg:w-px" />
         </div>
