@@ -13,6 +13,8 @@ export const Navbar: React.FC<{
   textMap: Record<string, string>;
 }> = (props) => {
   const pathname = usePathname();
+  const pathnameParts = pathname.split("/");
+  const page = pathnameParts.length === 2 ? "" : pathnameParts.pop();
 
   const [showNavbar, setShownavbar] = useState(false);
   const [mobileNavbarOpen, setMobileNavbarOpen] = useState(false);
@@ -57,27 +59,20 @@ export const Navbar: React.FC<{
         } flex-col lg:flex lg:flex-row`}
       >
         <div className="flex flex-col gap-4 text-2xl lg:px-4 lg:text-sm lg:flex-row">
-          <Link
-            href="/"
-            className={`${pathname === `/${props.lang}` ? `text-fire` : ``}`}
-          >
+          <Link href="/" className={`${page === "" ? `text-fire` : ``}`}>
             {props.textMap["11hCKGngwjrpGFh8oyrFoA"]}
           </Link>
           <div className="h-px bg-white opacity-30 lg:h-auto lg:w-px" />
           <Link
             href={`/${props.lang}/about`}
-            className={`${
-              pathname === `/${props.lang}/about` ? `text-fire` : ``
-            }`}
+            className={`${page === "about" ? `text-fire` : ``}`}
           >
             {props.textMap["4OyFrpd3dju2iV7L4nH7ZP"]}
           </Link>
           <div className="h-px bg-white opacity-30 lg:h-auto lg:w-px" />
           <Link
             href={`/${props.lang}/rankings`}
-            className={`${
-              pathname === `/${props.lang}/rankings` ? `text-fire` : ``
-            }`}
+            className={`${page === "rankings" ? `text-fire` : ``}`}
           >
             {props.textMap["1LzbPDhcE1gAxrCixGpG6D"]}
           </Link>
@@ -85,7 +80,7 @@ export const Navbar: React.FC<{
         </div>
         <div className="flex gap-4 py-4 flex-col lg:flex-row lg:py-0">
           {props.lang !== "fi" && (
-            <div className="flex gap-4">
+            <Link href={`/fi/${page}`} className="flex gap-4">
               <Image
                 className="rounded-sm"
                 src="/fi.svg"
@@ -94,10 +89,10 @@ export const Navbar: React.FC<{
                 alt="Suomeksi"
               />
               <span className="lg:hidden">Suomeksi</span>
-            </div>
+            </Link>
           )}
           {props.lang !== "sv" && (
-            <div className="flex gap-4">
+            <Link href={`/sv/${page}`} className="flex gap-4">
               <Image
                 className="rounded-sm"
                 src="/se.svg"
@@ -106,10 +101,10 @@ export const Navbar: React.FC<{
                 alt="Svenska"
               />
               <span className="lg:hidden">Svenska</span>
-            </div>
+            </Link>
           )}
           {props.lang !== "en" && (
-            <div className="flex gap-4">
+            <Link href={`/en/${page}`} className="flex gap-4">
               <Image
                 className="rounded-sm"
                 src="/gb.svg"
@@ -118,7 +113,7 @@ export const Navbar: React.FC<{
                 alt="English"
               />
               <span className="lg:hidden">English</span>
-            </div>
+            </Link>
           )}
         </div>
       </div>

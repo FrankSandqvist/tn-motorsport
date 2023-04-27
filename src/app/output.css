@@ -1017,10 +1017,6 @@ video {
   background-size: cover;
 }
 
-.bg-fixed {
-  background-attachment: fixed;
-}
-
 .bg-right {
   background-position: right;
 }
@@ -1315,8 +1311,16 @@ video {
     display: block;
   }
 
+  .md\:h-\[30vh\] {
+    height: 30vh;
+  }
+
   .md\:w-\[calc\(100\%-4rem\)\] {
     width: calc(100% - 4rem);
+  }
+
+  .md\:w-\[30vh\] {
+    width: 30vh;
   }
 
   .md\:flex-row {
@@ -1385,12 +1389,28 @@ video {
     height: auto;
   }
 
+  .lg\:h-\[60vh\] {
+    height: 60vh;
+  }
+
+  .lg\:h-\[30vh\] {
+    height: 30vh;
+  }
+
   .lg\:w-1\/2 {
     width: 50%;
   }
 
   .lg\:w-px {
     width: 1px;
+  }
+
+  .lg\:w-\[60vh\] {
+    width: 60vh;
+  }
+
+  .lg\:w-\[30vh\] {
+    width: 30vh;
   }
 
   .lg\:flex-auto {
@@ -1447,6 +1467,30 @@ video {
 
   .xl\:-mr-32 {
     margin-right: -8rem;
+  }
+
+  .xl\:h-\[60vh\] {
+    height: 60vh;
+  }
+
+  .xl\:h-\[55vh\] {
+    height: 55vh;
+  }
+
+  .xl\:h-\[50vh\] {
+    height: 50vh;
+  }
+
+  .xl\:w-\[60vh\] {
+    width: 60vh;
+  }
+
+  .xl\:w-\[55vh\] {
+    width: 55vh;
+  }
+
+  .xl\:w-\[50vh\] {
+    width: 50vh;
   }
 
   .xl\:grid-cols-4 {

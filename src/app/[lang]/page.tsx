@@ -11,6 +11,12 @@ import { getLocalizedRichTextMap, getLocalizedTextMap } from "@/utils/get-texts"
 import { faBoltLightning, faFlagCheckered, faGaugeHigh } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+export const generateStaticParams = () => [
+  { lang: "sv" },
+  { lang: "fi" },
+  { lang: "en" },
+];
+
 const Home = async ({ params }: any) => {
   const lang = params.lang as "en" | "fi" | "sv";
 
@@ -30,7 +36,10 @@ const Home = async ({ params }: any) => {
           </h2>
         </div>
         <div className="max-w-4xl mb-32 leading-relaxed">
-          <RichText className="mb-8" doc={richTextMap["4OdMHxuD0moTTaByPOTjYI"]} />
+          <RichText
+            className="mb-8"
+            doc={richTextMap["4OdMHxuD0moTTaByPOTjYI"]}
+          />
         </div>
       </Wrapper>
       <Wrapper className="mb-44">

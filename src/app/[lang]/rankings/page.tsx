@@ -1,5 +1,4 @@
 import * as contentful from "contentful";
-import Image from "next/image";
 import React from "react";
 
 import { Hero } from "@/components/hero";
@@ -7,6 +6,12 @@ import { InstagramFeedSection } from "@/components/instagram-feed-section";
 import { LogoSection } from "@/components/logo-section";
 import { Wrapper } from "@/components/wrapper";
 import { getLocalizedTextMap } from "@/utils/get-texts";
+
+export const generateStaticParams = () => [
+  { lang: "sv" },
+  { lang: "fi" },
+  { lang: "en" },
+];
 
 const content = contentful.createClient({
   accessToken: process.env.CONTENTFUL_API_KEY!,

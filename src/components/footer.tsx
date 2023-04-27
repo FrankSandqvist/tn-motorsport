@@ -104,7 +104,7 @@ export const Footer: React.FC<{
           </button>
         </form>
       </Wrapper>
-      <div className="absolute mix-blend-multiply opacity-50  w-[60vh] h-[60vh] right-40 bottom-24 hidden lg:block">
+      <div className="absolute mix-blend-multiply opacity-50 right-40 bottom-24 hidden lg:w-[30vh] lg:h-[30vh] xl:w-[50vh] xl:h-[50vh] lg:block">
         <Image
           src="/footer-helmet-shadow.jpg"
           quality={90}
@@ -113,7 +113,7 @@ export const Footer: React.FC<{
           className="object-contain"
         />
       </div>
-      <div className="absolute mix-blend-lighten w-[60vh] h-[60vh] right-40 bottom-24 hidden lg:block">
+      <div className="absolute mix-blend-lighten right-40 bottom-24 hidden lg:w-[30vh] lg:h-[30vh] xl:w-[50vh] xl:h-[50vh] lg:block">
         <Image
           src="/footer-helmet.jpg"
           quality={90}

@@ -1,4 +1,3 @@
-import * as contentful from "contentful";
 import Image from "next/image";
 import React from "react";
 
@@ -8,10 +7,11 @@ import { RichText } from "@/components/rich-text";
 import { Wrapper } from "@/components/wrapper";
 import { getLocalizedRichTextMap, getLocalizedTextMap } from "@/utils/get-texts";
 
-const content = contentful.createClient({
-  accessToken: process.env.CONTENTFUL_API_KEY!,
-  space: "r8lurnfo6cag",
-});
+export const generateStaticParams = () => [
+  { lang: "sv" },
+  { lang: "fi" },
+  { lang: "en" },
+];
 
 const About = async ({ params }: any) => {
   const lang = params.lang as "en" | "fi" | "sv";
