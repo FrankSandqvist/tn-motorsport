@@ -12,11 +12,11 @@ const PageLayout = async ({
   const textMap = await getLocalizedTextMap(params.lang);
 
   return (
-    <>
+    <div className="text-xs sm:text-sm md:text-lg ">
       <Navbar lang={params.lang} textMap={textMap} />
       {children}
       <Footer lang={params.lang} textMap={textMap} />
-    </>
+    </div>
   );
 };
 

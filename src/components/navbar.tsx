@@ -31,7 +31,7 @@ export const Navbar: React.FC<{
   return (
     <nav
       className={`flex fixed flex-col items-stretch ${
-        showNavbar ? "bg-tyre-transp backdrop-blur-lg" : ""
+        mobileNavbarOpen || showNavbar ? "bg-tyre-transp backdrop-blur-lg" : ""
       } transition-all duration-300 w-full items-center px-8 z-50 lg:flex-row lg:items-center`}
     >
       <div className="h-16 flex flex-row items-center flex-grow">

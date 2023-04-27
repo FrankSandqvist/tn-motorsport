@@ -64,7 +64,7 @@ const About = async ({ params }: any) => {
         </div>
       </Wrapper>
       <Wrapper className="mb-32">
-        <div className="flex flex-row">
+        <div className="flex flex-col gap-8 lg:flex-row">
           <TeamMember
             imageSrc="/leif.jpg"
             imageAlt="Leif"

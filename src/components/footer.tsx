@@ -15,7 +15,7 @@ export const Footer: React.FC<{
   return (
     <footer className="relative min-h-[90vh] overflow-hidden">
       <div
-        className="absolute left-0 top-0 right-0 bottom-0 bg-right bg-cover bg-fixed"
+        className="absolute left-0 top-0 right-0 bottom-0 bg-right bg-cover md:bg-fixed"
         style={{ backgroundImage: 'url("/footer-bg.jpg")' }}
       ></div>
       <div className="h-[13vh] from-tyre to-transparent bg-gradient-to-b mix-blend-darken">
@@ -26,7 +26,7 @@ export const Footer: React.FC<{
         </Wrapper>
       </div>
       <Wrapper className="mt-4">
-        <div className="w-full flex flex-col gap-4 -mt-[6vh] mb-8 text-xs sm:text-sm md:text-lg lg:mb-16 lg:flex-row">
+        <div className="w-full flex flex-col gap-4 -mt-[6vh] mb-8 lg:mb-16 lg:flex-row">
           <div className="flex-grow">
             T.N Motorsport Service Öb
             <br />
@@ -52,7 +52,7 @@ export const Footer: React.FC<{
         <form
           method="POST"
           action={process.env.HEADLESSFORMS_ACTION_URL}
-          className="flex flex-col gap-4 text-xs sm:text-sm md:text-lg lg:w-1/2"
+          className="flex flex-col gap-4 text-xs pb-8 sm:text-sm md:text-lg lg:w-1/2"
         >
           <input type="hidden" name="tn" value="tn.motorsport93@gmail.com" />
           <FormElementContainer>
