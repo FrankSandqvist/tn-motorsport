@@ -4,18 +4,20 @@ import { getLocalizedTextMap } from "@/utils/get-texts";
 
 const PageLayout = async ({
   params,
+  searchParams,
   children,
 }: {
   params: any;
+  searchParams: any,
   children: React.ReactNode;
 }) => {
   const textMap = await getLocalizedTextMap(params.lang);
 
   return (
-    <div className="text-xs sm:text-sm md:text-lg ">
+    <div className="text-xs sm:text-sm">
       <Navbar lang={params.lang} textMap={textMap} />
       {children}
-      <Footer lang={params.lang} textMap={textMap} />
+      <Footer lang={params.lang} initialFormContent={searchParams?.form} textMap={textMap} />
     </div>
   );
 };

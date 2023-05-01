@@ -1,8 +1,9 @@
+import { Url } from "next/dist/shared/lib/router/router";
 import Link from "next/link";
 import React from "react";
 
 export const ButtonLink: React.FC<{
-  href: string;
+  href: Url;
   ultra?: boolean;
   children?: any;
   className?: string;

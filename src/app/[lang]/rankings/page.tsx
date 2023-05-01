@@ -58,9 +58,11 @@ const About = async ({ params }: any) => {
       <Wrapper overlap className="mb-32">
         <div className="mb-16 lg:mb-32">
           <h1 className="font-black text-xl mb-2 uppercase text-fire">
-            TN MOTORSPORT
+            {textMap["4g7iFIZ5QeXlD9MBwhfome"]}
           </h1>
-          <h2 className="font-black text-4xl">Competition Rankings</h2>
+          <h2 className="font-black text-4xl">
+            {textMap["2IbKWJEG0EnE3ImEryGahg"]}
+          </h2>
         </div>
         {competitionResultYears.map(([year, results]) => (
           <div key={year} className="mb-8 w-full max-w-lg flex flex-col">
@@ -78,6 +80,14 @@ const About = async ({ params }: any) => {
       <LogoSection textMap={textMap} className="mb-64" />
     </main>
   );
+};
+
+export const generateMetadata = async ({ params }: { params: any }) => {
+  const lang = params.lang as "en" | "fi" | "sv";
+  const textMap = await getLocalizedTextMap(lang);
+  return {
+    title: `${textMap["4g7iFIZ5QeXlD9MBwhfome"]} | ${textMap["2IbKWJEG0EnE3ImEryGahg"]}`,
+  };
 };
 
 export default About;

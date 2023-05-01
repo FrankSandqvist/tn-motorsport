@@ -1,17 +1,24 @@
 import Image from "next/image";
+import { Suspense } from "react";
 
-import { getLocalizedTextMap } from "@/utils/get-texts";
-import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import { ContactForm } from "./contact-form";
 import { Wrapper } from "./wrapper";
-
-// Apply font scaling globally to size (based on viewport)
 
 export const Footer: React.FC<{
   lang: "fi" | "en" | "sv";
   textMap: Record<string, string>;
+  initialFormContent?: string;
 }> = (props) => {
+  console.log(props.initialFormContent);
+
+  const initialMessage =
+    props.initialFormContent &&
+    {
+      visibility: "",
+      experience: "I'm interested in booking a driving day",
+      "exclusive-package": "",
+    }[props.initialFormContent];
+
   return (
     <footer className="relative min-h-[90vh] overflow-hidden">
       <div
@@ -49,60 +56,10 @@ export const Footer: React.FC<{
             <a href="tel:+358 40 96 03 415">+358 40 96 03 415</a>
           </div>
         </div>
-        <form
-          method="POST"
-          action={process.env.HEADLESSFORMS_ACTION_URL}
-          className="flex flex-col gap-4 text-xs pb-8 sm:text-sm md:text-lg lg:w-1/2"
-        >
-          <input type="hidden" name="tn" value="tn.motorsport93@gmail.com" />
-          <FormElementContainer>
-            <FormElementLabel for="name">
-              {props.textMap["4pRzicNNsbkPkudW94o5jp"]}
-            </FormElementLabel>
-            <FormElementInput
-              type="text"
-              name="name"
-              placeholder="Mika Häkkinen"
-            />
-          </FormElementContainer>
-          <FormElementContainer>
-            <FormElementLabel for="phone_number">
-              {props.textMap["54tRDktKPgtixMr3dd7kFs"]}
-            </FormElementLabel>
-            <FormElementInput
-              type="text"
-              name="phone_number"
-              placeholder="+358"
-            />
-          </FormElementContainer>
-          <FormElementContainer>
-            <FormElementLabel for="email">
-              {props.textMap["2IQacF6ftq6dHJ2FXKxp5E"]}
-            </FormElementLabel>
-            <FormElementInput
-              type="email"
-              name="email"
-              placeholder="mika.hakkinen@f1.com"
-            />
-          </FormElementContainer>
-          <FormElementContainer>
-            <FormElementLabel for="message">
-              {props.textMap["2iRTGL8QZcrx5jYw0skg1i"]}
-            </FormElementLabel>
-            <textarea
-              name="message"
-              placeholder="Tommi, let's drive."
-              className="bg-transparent placeholder:text-[#fff3] outline-fire px-4 py-4 transition-all duration-300 focus:drop-shadow-fire"
-            ></textarea>
-          </FormElementContainer>
-          <button
-            type="submit"
-            className="uppercase font-black flex flex-row items-center justify-center p-4 border border-transparent duration-300 transition-all hover:drop-shadow-fire hover:border-fire border-b-fire"
-          >
-            <FontAwesomeIcon icon={faPaperPlane} className="mr-4 text-xl" />
-            {props.textMap["3pPnyiah7oZAhC39DYTzNW"]}
-          </button>
-        </form>
+        <a id="contact-form" />
+        <Suspense>
+          <ContactForm textMap={props.textMap} />
+        </Suspense>
       </Wrapper>
       <div className="absolute mix-blend-multiply opacity-50 right-40 bottom-24 hidden lg:w-[30vh] lg:h-[30vh] xl:w-[50vh] xl:h-[50vh] lg:block">
         <Image
@@ -123,36 +80,5 @@ export const Footer: React.FC<{
         />
       </div>
     </footer>
-  );
-};
-
-const FormElementContainer: React.FC<{ children: any }> = (props) => {
-  return (
-    <div className="flex flex-col bg-[#0003] backdrop-blur-md border-b border-fire">
-      {props.children}
-    </div>
-  );
-};
-
-const FormElementLabel: React.FC<{ for: string; children: any }> = (props) => {
-  return (
-    <label htmlFor={props.for} className="text-sm my-2 mx-4">
-      {props.children}
-    </label>
-  );
-};
-
-const FormElementInput: React.FC<{
-  type: string;
-  name: string;
-  placeholder: string;
-}> = (props) => {
-  return (
-    <input
-      type={props.type}
-      name={props.name}
-      className="bg-transparent placeholder:text-[#fff3] outline-fire px-4 py-2 transition-all duration-300 focus:drop-shadow-fire lg:py-4"
-      placeholder={props.placeholder}
-    ></input>
   );
 };

@@ -25,10 +25,10 @@ const About = async ({ params }: any) => {
       <Wrapper overlap>
         <div className="mb-16 lg:mb-32">
           <h1 className="font-black text-xl mb-2 uppercase text-fire">
-            Since 20XX
+            {textMap["4nSNk4pa6LsWIouNgXLs1S"]}
           </h1>
           <h2 className="font-black text-4xl">
-            {textMap["4nSNk4pa6LsWIouNgXLs1S"]}
+            {textMap["2ntoWFp6yeC7XWHox6cWJK"]}
           </h2>
         </div>
         <div className="max-w-4xl mb-64 leading-relaxed">
@@ -39,18 +39,19 @@ const About = async ({ params }: any) => {
         </div>
       </Wrapper>
       <Wrapper className="mb-16">
-        <div className="flex flex-row ">
-          <div className="relative w-1/3 -mt-32">
+        <div className="flex flex-col md:flex-row">
+          <div className="relative w-1/3 h-96 md:h-auto md:-mt-48">
             <Image
               src="/tommi.jpg"
               fill
+              quality={70}
               alt="Tommi"
               className="object-contain w-full h-full mix-blend-screen"
             />
             <div className="absolute h-px left-0 bottom-0 -right-32 bg-gradient-to-r from-transparent via-fire to-transparent via-20%" />
             <div className="absolute h-px left-0 bottom-0 -right-64 bg-gradient-to-r from-transparent via-fire to-transparent via-20% blur-[1px]" />
           </div>
-          <div className="w-2/3 pt-32 pb-8">
+          <div className="pb-8 pt-8 md:pt-32 md:w-2/3">
             <h3 className="text-fire uppercase font-black">
               {textMap["1sqS1l3GeFGTOxUsGRiqjv"]}
             </h3>
@@ -113,6 +114,14 @@ const TeamMember: React.FC<{
       </div>
     </div>
   );
+};
+
+export const generateMetadata = async ({ params }: { params: any }) => {
+  const lang = params.lang as "en" | "fi" | "sv";
+  const textMap = await getLocalizedTextMap(lang);
+  return {
+    title: `${textMap["4nSNk4pa6LsWIouNgXLs1S"]} | ${textMap["2ntoWFp6yeC7XWHox6cWJK"]}`,
+  };
 };
 
 export default About;
