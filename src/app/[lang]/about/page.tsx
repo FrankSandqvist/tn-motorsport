@@ -40,7 +40,7 @@ const About = async ({ params }: any) => {
       </Wrapper>
       <Wrapper className="mb-16">
         <div className="flex flex-col md:flex-row">
-          <div className="relative w-1/3 h-96 md:h-auto md:-mt-48">
+          <div className="relative h-96 md:h-auto md:-mt-48 md:w-1/3">
             <Image
               src="/tommi.jpg"
               fill
