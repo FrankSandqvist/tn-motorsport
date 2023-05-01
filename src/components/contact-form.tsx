@@ -28,9 +28,9 @@ export const ContactForm: React.FC<{
   useEffect(() => {
     if (formPrefill) {
       const prefillText = {
-        visibility: "I am interested in the visibility package.",
-        experience: "I am interested in the driving experience.",
-        exclusive: "I am interested in the exclusive package.",
+        marketing: props.textMap["6GdbiDlM17GiW0UjwBVHCo"],
+        driving: props.textMap["5xabFEYJVuT2I13xNMzhfU"],
+        exclusive: props.textMap["4Ux8H2KalyQWALxUquicwK"],
       }[formPrefill];
 
       if (prefillText) {

@@ -9,16 +9,6 @@ export const Footer: React.FC<{
   textMap: Record<string, string>;
   initialFormContent?: string;
 }> = (props) => {
-  console.log(props.initialFormContent);
-
-  const initialMessage =
-    props.initialFormContent &&
-    {
-      visibility: "",
-      experience: "I'm interested in booking a driving day",
-      "exclusive-package": "",
-    }[props.initialFormContent];
-
   return (
     <footer className="relative min-h-[90vh] overflow-hidden">
       <div

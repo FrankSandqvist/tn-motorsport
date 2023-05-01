@@ -78,7 +78,7 @@ const Home = async ({ params }: any) => {
               href={{
                 pathname: `/${lang}`,
                 query: {
-                  "form-prefill": "visibility",
+                  "form-prefill": "marketing",
                 },
               }}
               className="z-10 font-black uppercase"
@@ -124,7 +124,7 @@ const Home = async ({ params }: any) => {
               href={{
                 pathname: `/${lang}`,
                 query: {
-                  "form-prefill": "experience",
+                  "form-prefill": "driving",
                 },
               }}
               className="z-10 font-black uppercase"
