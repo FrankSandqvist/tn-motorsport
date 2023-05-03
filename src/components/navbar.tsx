@@ -79,7 +79,7 @@ export const Navbar: React.FC<{
           <div className="h-px bg-white opacity-30 lg:h-auto lg:w-px" />
         </div>
         <div className="flex gap-4 py-4 flex-col lg:flex-row lg:py-0">
-          {props.lang !== "fi" && (
+          {/*props.lang !== "fi" && (
             <Link href={`/fi/${page}`} className="flex gap-4">
               <Image
                 className="rounded-sm"
@@ -90,7 +90,7 @@ export const Navbar: React.FC<{
               />
               <span className="lg:hidden">Suomeksi</span>
             </Link>
-          )}
+          )*/}
           {props.lang !== "sv" && (
             <Link href={`/sv/${page}`} className="flex gap-4">
               <Image

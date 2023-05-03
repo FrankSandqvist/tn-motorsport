@@ -13,12 +13,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const generateStaticParams = () => [
   { lang: "sv" },
-  { lang: "fi" },
   { lang: "en" },
 ];
 
 const Home = async ({ params }: any) => {
-  const lang = params.lang as "en" | "fi" | "sv";
+  const lang = params.lang as "en" | "sv";
 
   const textMap = await getLocalizedTextMap(lang);
   const richTextMap = await getLocalizedRichTextMap(lang);
@@ -156,6 +155,9 @@ const Home = async ({ params }: any) => {
               <BulletPoint ultra>
                 <RichText ultra doc={richTextMap["1rTOvHd4mz3kWBqLTA0PeX"]} />
               </BulletPoint>
+              <BulletPoint ultra>
+                <RichText ultra doc={richTextMap["5161Ao4FB0592MCBNNpJHZ"]} />
+              </BulletPoint>
             </BulletPointContainer>
             <div className="flex-grow" />
             <ButtonLink
@@ -176,7 +178,7 @@ const Home = async ({ params }: any) => {
       </Wrapper>
       <div className="relative w-full mb-32">
         <Image
-          className="absolute right-0 bottom-0 w-1/2 h-full mix-blend-screen object-contain object-right-bottom"
+          className="absolute right-0 bottom-0 h-full mix-blend-screen object-contain object-right-bottom w-full lg:w-1/2 "
           src="/neotide-photo.jpg"
           alt="Neotide group photo"
           quality="60"

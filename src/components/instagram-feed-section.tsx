@@ -14,6 +14,19 @@ export const InstagramFeedSection: React.FC<{
           {props.textMap["5ojOZTkwiPDxtP2nm4ECev"]}
         </h2>
         <div className="flex flex-col gap-4 md:flex-row">
+        <ButtonLink
+            href="https://www.youtube.com/@TommiNyvall"
+            className="flex flex-row gap-2 items-center p-2 flex-grow lg:flex-auto"
+          >
+            <Image
+              src="/youtube.svg"
+              width={30}
+              height={30}
+              alt="Youtube"
+              className=""
+            />
+            YouTube
+          </ButtonLink>
           <ButtonLink
             href="https://www.facebook.com/TNmotorsport62/"
             className="flex flex-row gap-2 items-center p-2 flex-grow lg:flex-auto"
@@ -25,7 +38,7 @@ export const InstagramFeedSection: React.FC<{
               alt="Facebook"
               className=""
             />
-            TN Motorsport
+            FB
           </ButtonLink>
           <ButtonLink
             href="https://www.instagram.com/tomminyvall/"
@@ -38,7 +51,7 @@ export const InstagramFeedSection: React.FC<{
               alt="Instagram"
               className=""
             />
-            @tomminyvall
+            IG
           </ButtonLink>
         </div>
       </Wrapper>

@@ -48,8 +48,8 @@ const About = async ({ params }: any) => {
               alt="Tommi"
               className="object-contain w-full h-full mix-blend-screen"
             />
-            <div className="absolute h-px left-0 bottom-0 -right-32 bg-gradient-to-r from-transparent via-fire to-transparent via-20%" />
-            <div className="absolute h-px left-0 bottom-0 -right-64 bg-gradient-to-r from-transparent via-fire to-transparent via-20% blur-[1px]" />
+            <div className="absolute h-px left-0 bottom-0 right-0 bg-gradient-to-r from-transparent via-fire to-transparent via-20% lg:-right-32" />
+            <div className="absolute h-px left-0 bottom-0 right-0 bg-gradient-to-r from-transparent via-fire to-transparent via-20% blur-[1px] lg:-right-64" />
           </div>
           <div className="pb-8 pt-8 md:pt-32 md:w-2/3">
             <h3 className="text-fire uppercase font-black">

@@ -32,7 +32,7 @@ export const Footer: React.FC<{
             66950 Munsala
           </div>
           <div className="flex-grow">
-            Tommi Nyvall
+            Tommi Nyvall (fi/sv/en)
             <br />
             <a href="tel:+358 40 96 04 227">+358 40 96 04 227</a>
             <br />
@@ -41,7 +41,7 @@ export const Footer: React.FC<{
             </a>
           </div>
           <div className="flex-grow">
-            Leif Nyvall
+            Leif Nyvall (sv/en)
             <br />
             <a href="tel:+358 40 96 03 415">+358 40 96 03 415</a>
           </div>
