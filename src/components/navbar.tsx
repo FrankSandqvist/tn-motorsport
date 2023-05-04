@@ -59,13 +59,18 @@ export const Navbar: React.FC<{
         } flex-col lg:flex lg:flex-row`}
       >
         <div className="flex flex-col gap-4 text-2xl lg:px-4 lg:text-sm lg:flex-row">
-          <Link href="/" className={`${page === "" ? `text-fire` : ``}`}>
+          <Link
+            href="/"
+            className={`${page === "" ? `text-fire` : ``}`}
+            onClick={() => setMobileNavbarOpen(false)}
+          >
             {props.textMap["11hCKGngwjrpGFh8oyrFoA"]}
           </Link>
           <div className="h-px bg-white opacity-30 lg:h-auto lg:w-px" />
           <Link
             href={`/${props.lang}/about`}
             className={`${page === "about" ? `text-fire` : ``}`}
+            onClick={() => setMobileNavbarOpen(false)}
           >
             {props.textMap["4OyFrpd3dju2iV7L4nH7ZP"]}
           </Link>
@@ -73,6 +78,7 @@ export const Navbar: React.FC<{
           <Link
             href={`/${props.lang}/rankings`}
             className={`${page === "rankings" ? `text-fire` : ``}`}
+            onClick={() => setMobileNavbarOpen(false)}
           >
             {props.textMap["1LzbPDhcE1gAxrCixGpG6D"]}
           </Link>
@@ -92,7 +98,11 @@ export const Navbar: React.FC<{
             </Link>
           )*/}
           {props.lang !== "sv" && (
-            <Link href={`/sv/${page}`} className="flex gap-4">
+            <Link
+              href={`/sv/${page}`}
+              className="flex gap-4"
+              onClick={() => setMobileNavbarOpen(false)}
+            >
               <Image
                 className="rounded-sm"
                 src="/se.svg"
@@ -104,7 +114,11 @@ export const Navbar: React.FC<{
             </Link>
           )}
           {props.lang !== "en" && (
-            <Link href={`/en/${page}`} className="flex gap-4">
+            <Link
+              href={`/en/${page}`}
+              className="flex gap-4"
+              onClick={() => setMobileNavbarOpen(false)}
+            >
               <Image
                 className="rounded-sm"
                 src="/gb.svg"
