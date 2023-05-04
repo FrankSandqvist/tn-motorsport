@@ -11,10 +11,12 @@ export const Footer: React.FC<{
 }> = (props) => {
   return (
     <footer className="relative min-h-[90vh] overflow-hidden">
-      <div
-        className="absolute left-0 top-0 right-0 bottom-0 bg-right bg-cover md:bg-fixed"
-        style={{ backgroundImage: 'url("/footer-bg.jpg")' }}
-      ></div>
+      <Image
+        src="/footer-bg.jpg"
+        className="absolute left-0 top-0 right-0 bottom-0 md:bg-fixed object-cover object-right"
+        fill
+        alt="Footer"
+      />
       <div className="h-[13vh] from-tyre to-transparent bg-gradient-to-b mix-blend-darken">
         <Wrapper>
           <h2 className="font-black text-white text-4xl lg:text-6xl mb-16">
