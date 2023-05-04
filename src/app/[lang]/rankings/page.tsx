@@ -32,8 +32,9 @@ const About = async ({ params }: any) => {
   });
 
   const competitionResultYears = competitionResults.items
-    .sort((a, b) => b.fields.year - a.fields.year)
-    .reduce<
+  .sort((a, b) => a.fields.position - b.fields.position)
+  .sort((a, b) => b.fields.year - a.fields.year)
+  .reduce<
       Array<
         [
           number,
@@ -68,9 +69,9 @@ const About = async ({ params }: any) => {
           <div key={year} className="mb-8 w-full max-w-lg flex flex-col">
             <h3 className="font-black text-xl text-fire mb-4">{year}</h3>
             {results.map((r) => (
-              <div key={r.competition} className="flex justify-stretch mb-2">
+              <div key={r.competition} className={`flex justify-stretch mb-2 ${r.position === 1 ? `text-[110%] drop-shadow-fire mb-3`: ``}`}>
                 <div className="flex-grow">{r.competition}</div>
-                <div>{r.position}</div>
+                <div className={r.position === 1 ? "text-amber-300" : r.position === 2 ? "text-gray-300" : r.position === 3 ? "text-yellow-500" : ""}>{r.position}</div>
               </div>
             ))}
           </div>

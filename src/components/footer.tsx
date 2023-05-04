@@ -23,7 +23,7 @@ export const Footer: React.FC<{
         </Wrapper>
       </div>
       <Wrapper className="mt-4">
-        <div className="w-full flex flex-col gap-4 -mt-[6vh] mb-8 lg:mb-16 lg:flex-row">
+        <div className="w-full flex flex-col gap-4 -mt-[6vh] mb-8 drop-shadow-md lg:mb-16 lg:flex-row">
           <div className="flex-grow">
             T.N Motorsport Service Öb
             <br />
@@ -32,7 +32,30 @@ export const Footer: React.FC<{
             66950 Munsala
           </div>
           <div className="flex-grow">
-            Tommi Nyvall (fi/sv/en)
+            Tommi Nyvall{" "}
+            <span className="inline-flex gap-1">
+              <Image
+                className="rounded-sm"
+                src="/se.svg"
+                width="20"
+                height="15"
+                alt="Svenska"
+              />
+              <Image
+                className="rounded-sm"
+                src="/fi.svg"
+                width="20"
+                height="15"
+                alt="Suomi"
+              />
+              <Image
+                className="rounded-sm"
+                src="/gb.svg"
+                width="20"
+                height="15"
+                alt="English"
+              />
+            </span>
             <br />
             <a href="tel:+358 40 96 04 227">+358 40 96 04 227</a>
             <br />
@@ -41,7 +64,23 @@ export const Footer: React.FC<{
             </a>
           </div>
           <div className="flex-grow">
-            Leif Nyvall (sv/en)
+            Leif Nyvall{" "}
+            <span className="inline-flex gap-1">
+              <Image
+                className="rounded-sm"
+                src="/se.svg"
+                width="20"
+                height="15"
+                alt="Svenska"
+              />
+              <Image
+                className="rounded-sm"
+                src="/gb.svg"
+                width="20"
+                height="15"
+                alt="English"
+              />
+            </span>
             <br />
             <a href="tel:+358 40 96 03 415">+358 40 96 03 415</a>
           </div>
