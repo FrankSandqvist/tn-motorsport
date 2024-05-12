@@ -7,14 +7,18 @@ import { InstagramFeedSection } from "@/components/instagram-feed-section";
 import { LogoSection } from "@/components/logo-section";
 import { RichText } from "@/components/rich-text";
 import { Wrapper } from "@/components/wrapper";
-import { getLocalizedRichTextMap, getLocalizedTextMap } from "@/utils/get-texts";
-import { faBoltLightning, faFlagCheckered, faGaugeHigh } from "@fortawesome/free-solid-svg-icons";
+import {
+  getLocalizedRichTextMap,
+  getLocalizedTextMap,
+} from "@/utils/get-texts";
+import {
+  faBoltLightning,
+  faFlagCheckered,
+  faGaugeHigh,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export const generateStaticParams = () => [
-  { lang: "sv" },
-  { lang: "en" },
-];
+export const generateStaticParams = () => [{ lang: "sv" }, { lang: "en" }];
 
 const Home = async ({ params }: any) => {
   const lang = params.lang as "en" | "sv";
@@ -24,7 +28,10 @@ const Home = async ({ params }: any) => {
 
   return (
     <main className="">
-      <Hero portraitVideoSrc="/loop-new-portrait.mov" landscapeVideoSrc="/loop-new.mov" />
+      <Hero
+        portraitVideoSrc="/loop-new-portrait.mov"
+        landscapeVideoSrc="/loop-new.mov"
+      />
       <Wrapper overlap>
         <div className="mb-16 lg:mb-32">
           <h1 className="font-black text-lg mb-2 uppercase text-fire md:text-xl">
@@ -197,7 +204,22 @@ const Home = async ({ params }: any) => {
           />
         </Wrapper>
       </div>
-      <InstagramFeedSection textMap={textMap} className="mb-32" />
+      <InstagramFeedSection textMap={textMap} className="mb-48" />
+      <div className="relative w-full h-[70vh] mb-24 lg:h-auto lg:mb-48 bg-fire text-tyre">
+        <Wrapper className="flex flex-col py-24 h-full">
+          <h3 className="text-4xl font-black mb-16 max-w-3xl flex-grow">
+            {textMap["6FDKuF58ubTVsBKthhmNtk"]}
+          </h3>
+          <Image
+            src="/snowfactory-logo.png"
+            alt="Snow Factory logo"
+            width="100"
+            height="100"
+            className=" h-36 w-36 lg:h-32 lg:w-32 self-end object-contain"
+          />
+        </Wrapper>
+      </div>
+
       <LogoSection textMap={textMap} className="mb-64" />
     </main>
   );
