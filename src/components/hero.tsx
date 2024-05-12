@@ -2,19 +2,31 @@ import Image from "next/image";
 
 export const Hero: React.FC<{
   imageSrc?: string;
-  videoSrc?: string;
+  landscapeVideoSrc?: string;
+  portraitVideoSrc?: string;
 }> = (props) => {
   return (
     <div className="relative w-full h-screen">
-      {props.videoSrc && (
+      {props.landscapeVideoSrc && (
         <video
           autoPlay
           playsInline
           muted
           loop
-          className="absolute object-cover w-full h-full"
+          className="absolute object-cover w-full h-full hidden lg:block"
         >
-          <source src={props.videoSrc} type="video/mp4" />
+          <source src={props.landscapeVideoSrc} type="video/mp4" />
+        </video>
+      )}
+      {props.portraitVideoSrc && (
+        <video
+          autoPlay
+          playsInline
+          muted
+          loop
+          className="absolute object-cover w-full h-full block lg:hidden"
+        >
+          <source src={props.portraitVideoSrc} type="video/mp4" />
         </video>
       )}
       {props.imageSrc && (

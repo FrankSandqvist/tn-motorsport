@@ -24,7 +24,7 @@ const Home = async ({ params }: any) => {
 
   return (
     <main className="">
-      <Hero videoSrc="/loop-h264.mp4" />
+      <Hero portraitVideoSrc="/loop-new-portrait.mov" landscapeVideoSrc="/loop-new.mov" />
       <Wrapper overlap>
         <div className="mb-16 lg:mb-32">
           <h1 className="font-black text-lg mb-2 uppercase text-fire md:text-xl">
